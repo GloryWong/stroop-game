@@ -1,27 +1,78 @@
 {
   "name": "stroop-game",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "description": "stroop-game",
+  "author": "Glory Wong Zhaohui <glorywong1001@gmail.com>",
+  "main": "index.js",
+  "bugs": "https://github.com/GloryWong/stroop-game/issues",
+  "homepage": "https://stroop.zhaozhao.today/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GloryWong/stroop-game.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "// predev": "npm run clean",
+    "start": "craco start",
+    "// dev": "tsc-watch --sourceMap --onSuccess 'npm run tscrp'",
+    "// prebuild": "npm run clean",
+    "build": "craco build",
+    "// postbuild": "npm run tscrp",
+    "prepare": "husky install",
+    "prepublishOnly": "npm run build",
+    "test": "craco test",
+    "// tscrp": "tsconfig-replace-paths --project tsconfig.json",
+    "eject": "react-scripts eject",
+    "clean": "rm -rf dist/",
+    "lint": "eslint --ext .js,.ts",
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "prettier --write --ignore-unknown"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "autoprefixer": "^9",
+    "commitlint": "^12.1.4",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.1",
+    "eslint-config-airbnb-typescript-prettier": "^4.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.0.0",
+    "postcss": "^7",
+    "prettier": "^2.3.2",
+    "prettier-eslint": "^12.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "tsc-watch": "^4.4.0",
+    "tsconfig-replace-paths": "^0.0.5"
+  },
   "dependencies": {
+    "@craco/craco": "^6.3.0",
+    "@gloxy/unilog": "^1.2.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.1",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "tslib": "^2.3.0",
+    "type-fest": "^0.20.2",
+    "typescript": "^4.4.4",
     "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
