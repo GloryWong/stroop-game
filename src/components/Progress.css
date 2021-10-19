@@ -1,0 +1,15 @@
+progress {
+  background-color: #d1d5db;
+  /* border: 1px solid #f192b2; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+progress::-webkit-progress-bar {
+  background-color: #d1d5db;
+  border-radius: 10px;
+}
+progress::-webkit-progress-value {
+  background: linear-gradient(to right, transparent, #f192b2);
+  border-radius: 10px;
+  transition: width 100ms;
+}

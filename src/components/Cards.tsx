@@ -25,6 +25,9 @@ export default function Cards() {
     ;(dispatch as React.Dispatch<any>)({
       type: 'VERIFY_ANSWER',
     })
+    ;(dispatch as React.Dispatch<any>)({
+      type: 'CREATE_QUESTION',
+    })
   }
 
   return (

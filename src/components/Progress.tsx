@@ -1,10 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { Component, useCallback, useContext, useEffect, useState } from 'react'
+import { Store, Status } from '../context'
+import './Progress.css'
+
 export default function Progress() {
+  const { state } = useContext(Store)
+
   return (
     <div className="progress m-5">
       <div className="progress-bar">
-        <div className="bg-gray-300 w-full h-10 rounded overflow-hidden">
-          <div className="bg-yellow-500 w-5/6 h-full" />
+        <div className="bg-gray-300 w-full h-3 rounded-full overflow-hidden">
+          <div
+            className="bg-gradient-to-r from-transparent to-gray-500 h-full w-full rounded-full transition-all"
+            style={{ width: `${state.progress}%` }}
+          />
         </div>
+        {/* <progress
+          className="bg-gray-300 w-full h-3 rounded-full"
+          max="100"
+          value={state.progress}
+        /> */}
       </div>
     </div>
   )

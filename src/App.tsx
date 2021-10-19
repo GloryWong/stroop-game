@@ -1,8 +1,9 @@
 import './App.css'
 import Progress from './components/Progress'
 import Header from './components/Header'
-import Title from './components/Title'
+import Question from './components/Question'
 import Cards from './components/Cards'
+import Land from './components/Land'
 
 export default function App() {
   return (
@@ -10,9 +11,10 @@ export default function App() {
       <Header />
       <Progress />
       <div>
-        <Title />
+        <Question />
         <Cards />
       </div>
+      <Land />
     </div>
   )
 }
