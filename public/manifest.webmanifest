@@ -1,6 +1,7 @@
 {
   "short_name": "Stroop",
-  "name": "Play Stroop Game",
+  "name": "Stroop Game",
+  "description": "Stroop Test, have fun!",
   "icons": [
     {
       "src": "./img/android-chrome-192x192.png",
@@ -75,7 +76,9 @@
       "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
