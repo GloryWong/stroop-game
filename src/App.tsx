@@ -7,7 +7,7 @@ import Land from './components/Land'
 
 export default function App() {
   return (
-    <div className="App">
+    <div className="App flex flex-col w-screen h-screen justify-center items-center">
       <Header />
       <Progress />
       <div>

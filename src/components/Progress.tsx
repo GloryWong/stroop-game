@@ -9,7 +9,7 @@ export default function Progress() {
   const { state } = useContext(Store)
 
   return (
-    <div className="progress m-5">
+    <div className="progress m-5 w-3/4">
       <div className="progress-bar">
         <div className="bg-gray-300 w-full h-3 rounded-full overflow-hidden">
           <div
