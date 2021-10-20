@@ -19,9 +19,9 @@ function createQuestion(difficulty: Difficulty) {
   const eleLitrality = getRandomElement()
   let target: any
   if (difficulty === DIFFICULTY.EASY) {
-    target = TARGET.LITERALITY
-  } else if (difficulty === DIFFICULTY.NORMAL) {
     target = TARGET.COLOR
+  } else if (difficulty === DIFFICULTY.NORMAL) {
+    target = TARGET.LITERALITY
   } else {
     target = (() => getRandomInRange(Object.values(TARGET)))()
   }
@@ -90,6 +90,7 @@ function reducer(state: State, action: any) {
         return {
           ...initialState,
           status: STATUS.RUNNING,
+          difficulty: state.difficulty,
           question: createQuestion(state.difficulty),
         }
       }
