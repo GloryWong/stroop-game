@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FormEvent, useState, useContext } from 'react'
 import { DIFFICULTY, STATUS, DEFAULT_DIFFICULTY } from '../constants'
@@ -29,18 +30,20 @@ export default function Land() {
         state.status === STATUS.RUNNING ? 'scale-0' : 'scale-100'
       }`}
     >
-      <div className="mb-5 text-3xl text-gray-200">
+      <div className="menu absolute top-0 left-0 mt-5 ml-5">
         <button
           type="button"
-          className="text-5xl mr-2 transition transform hover:rotate-180"
+          className="absolute transition transform hover:rotate-180 flex justify-center items-center"
           onClick={() => {
             setSettingsVisible(true)
           }}
         >
-          ⚙
+          <span className="material-icons text-gray-300">settings</span>
         </button>
+      </div>
+      <div className="mb-5 text-3xl text-gray-200">
         <span>Stroop {t('game')}</span>
-        <span className="text-xl ml-1.5">v1.0</span>
+        <span className="text-xl ml-1.5">v1.2</span>
       </div>
       <div
         className={`status mb-5 p-3 border-2 border-red-300 rounded-2xl ${

@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { ChangeEvent, useContext } from 'react'
-import { DIFFICULTY, STATUS, DEFAULT_DIFFICULTY } from '../constants'
-import { Store } from '../context'
+import { ChangeEvent } from 'react'
 import i18n, { useTranslation } from '../i18n'
 
 function changeLanguage(lng: string) {
@@ -22,45 +20,59 @@ export default function Settings({ visible, setVisible }: Props) {
 
   return (
     <div
-      className={`container absolute shadow-lg rounded-3xl transition transform bg-gray-100 w-3/4 h-3/4 ${
+      className={`model absolute flex justify-center items-center w-screen h-screen bg-opacity-30 bg-black transition transform ${
         visible ? 'scale-100' : 'scale-0'
       }`}
     >
-      <div className="head relative pt-3 pl-5 pr-5 pb-20 ">
-        <div className="title font-bold text-xl absolute left-0 pl-5">
-          {t('settings')}
-        </div>
-        <button
-          type="button"
-          className="close absolute right-0 pr-5"
-          onClick={() => {
-            setVisible(false)
-          }}
-        >
-          X
-        </button>
-      </div>
-      <div className="body">
-        <label className="w-full h-full flex justify-center items-center">
-          <div className="title mr-5 font-medium">{t('language')}</div>
-          <div className="form-control">
-            <select
-              className="form-control"
-              name="language"
-              onChange={handleLanguageChange}
-            >
-              <option value="en">
-                🇬🇧&nbsp;&nbsp;{t('english')}&nbsp;(English)
-              </option>
-              <option value="cn">
-                🇨🇳&nbsp;&nbsp;{t('chinese')}&nbsp;(中文)
-              </option>
-              <option value="mm">
-                🇲🇲&nbsp;&nbsp;{t('myanmar')}&nbsp;(ဗမာ)
-              </option>
-            </select>
+      <div
+        className={`container p-5 shadow-lg rounded-3xl bg-gray-100 w-11/12 sm:w-9/12 md:w-60
+        `}
+      >
+        <div className="head relative h-5">
+          <div className="title font-bold text-xl absolute left-0">
+            {t('settings')}
           </div>
-        </label>
+          <button
+            type="button"
+            className="close absolute right-0"
+            onClick={() => {
+              setVisible(false)
+            }}
+          >
+            X
+          </button>
+        </div>
+        <div className="body mt-10 mb-10">
+          <label className="w-full h-full flex justify-center items-center">
+            <div className="title mr-3 font-medium">{t('language')}</div>
+            <div className="form-control">
+              <select
+                className="form-control"
+                name="language"
+                onChange={handleLanguageChange}
+              >
+                <option value="en">
+                  🇬🇧&nbsp;&nbsp;{t('english')}&nbsp;(English)
+                </option>
+                <option value="cn">
+                  🇨🇳&nbsp;&nbsp;{t('chinese')}&nbsp;(中文)
+                </option>
+                <option value="mm">
+                  🇲🇲&nbsp;&nbsp;{t('myanmar')}&nbsp;(ဗမာ)
+                </option>
+              </select>
+            </div>
+          </label>
+        </div>
+        <div className="foot relative h-5">
+          <button
+            type="button"
+            className="close font-semibold absolute right-0"
+            onClick={() => setVisible(false)}
+          >
+            {t('close')}
+          </button>
+        </div>
       </div>
     </div>
   )

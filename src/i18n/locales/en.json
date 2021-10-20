@@ -5,7 +5,7 @@
   "easy": "Easy",
   "normal": "Normal",
   "hard": "Hard",
-  "start": "Start",
+  "start": "START",
   "color": "color",
   "meaning": "meaning",
   "red": "RED",
@@ -17,5 +17,6 @@
   "language": "Language",
   "english": "English",
   "chinese": "Chinese",
-  "myanmar": "Myanmar"
+  "myanmar": "Myanmar",
+  "close": "CLOSE"
 }
