@@ -6,12 +6,18 @@ export default function Cards() {
   const { dispatch } = useContext(Store)
 
   function createCards() {
-    return PRIMARY_ELEMENTS.map(({ bgColor, value }) => (
+    const noneRounded = [
+      'rounded-br-none',
+      'rounded-bl-none',
+      'rounded-tr-none',
+      'rounded-tl-none',
+    ]
+    return PRIMARY_ELEMENTS.map(({ bgColor, value }, index) => (
       // eslint-disable-next-line jsx-a11y/control-has-associated-label
       <button
         key={value.appearance}
         type="button"
-        className={`${bgColor} rounded-3xl shadow hover:shadow-md transform scale-100 hover:scale-110 transition-all`}
+        className={`${bgColor} rounded-3xl ${noneRounded[index]} shadow hover:shadow-md transform scale-100 hover:scale-110 transition-all`}
         onClick={() => handleClick(value)}
       />
     ))
