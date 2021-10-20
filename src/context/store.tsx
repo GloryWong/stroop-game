@@ -21,7 +21,7 @@ function createQuestion(difficulty: Difficulty) {
   if (difficulty === DIFFICULTY.EASY) {
     target = TARGET.COLOR
   } else if (difficulty === DIFFICULTY.NORMAL) {
-    target = TARGET.LITERALITY
+    target = TARGET.MEANING
   } else {
     target = (() => getRandomInRange(Object.values(TARGET)))()
   }
@@ -31,15 +31,15 @@ function createQuestion(difficulty: Difficulty) {
     descriptionText: eleLitrality.text,
     value: {
       appearance: eleAppearance.value.appearance,
-      literality: eleLitrality.value.literality,
+      meaning: eleLitrality.value.meaning,
     },
     color: eleAppearance.color,
   }
 }
 
 function verifyAnswer(question: Question, answer: Answer) {
-  if (question.target === TARGET.LITERALITY) {
-    return question.value.literality === answer.literality
+  if (question.target === TARGET.MEANING) {
+    return question.value.meaning === answer.meaning
   }
   return question.value.appearance === answer.appearance
 }
@@ -47,7 +47,7 @@ function verifyAnswer(question: Question, answer: Answer) {
 export type Question = ReturnType<typeof createQuestion>
 export type Answer = {
   appearance: number
-  literality: number
+  meaning: number
 }
 
 export type State = {
@@ -69,7 +69,7 @@ const initialState: State = {
   question: createQuestion(DEFAULT_DIFFICULTY),
   answer: {
     appearance: 0,
-    literality: 0,
+    meaning: 0,
   },
   match: false,
   score: 0,

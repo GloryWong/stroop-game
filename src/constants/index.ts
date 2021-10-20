@@ -7,7 +7,7 @@ export const PRIMARY_ELEMENTS = [
     bgColor: 'bg-red-400',
     value: {
       appearance: 0,
-      literality: 4,
+      meaning: 4,
     },
   },
   {
@@ -16,7 +16,7 @@ export const PRIMARY_ELEMENTS = [
     bgColor: 'bg-yellow-400',
     value: {
       appearance: 1,
-      literality: 5,
+      meaning: 5,
     },
   },
   {
@@ -25,7 +25,7 @@ export const PRIMARY_ELEMENTS = [
     bgColor: 'bg-green-400',
     value: {
       appearance: 2,
-      literality: 6,
+      meaning: 6,
     },
   },
   {
@@ -34,7 +34,7 @@ export const PRIMARY_ELEMENTS = [
     bgColor: 'bg-blue-400',
     value: {
       appearance: 3,
-      literality: 7,
+      meaning: 7,
     },
   },
 ]
@@ -56,7 +56,7 @@ export type Status = ValueOf<typeof STATUS>
  *********************** */
 
 export const TARGET = {
-  LITERALITY: 'literality',
+  MEANING: 'meaning',
   COLOR: 'color',
 }
 
