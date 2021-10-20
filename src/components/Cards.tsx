@@ -12,12 +12,12 @@ export default function Cards() {
         key={value.appearance}
         type="button"
         className={`bg-${color} rounded-3xl shadow hover:shadow-md transform scale-100 hover:scale-110 transition-all`}
-        onClick={() => handleClick(value.appearance)}
+        onClick={() => handleClick(value)}
       />
     ))
   }
 
-  function handleClick(value: number) {
+  function handleClick(value: any) {
     ;(dispatch as React.Dispatch<any>)({
       type: 'FILL_ANSWER',
       payload: value,

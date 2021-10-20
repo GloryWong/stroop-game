@@ -1,17 +1,34 @@
 import React from 'react'
 import { getRandomInRange } from '../utils'
-import { PRIMARY_ELEMENTS } from '../constants'
+import {
+  PRIMARY_ELEMENTS,
+  TARGET,
+  Target,
+  Difficulty,
+  DEFAULT_DIFFICULTY,
+} from '../constants'
 
 function getRandomElement() {
   return getRandomInRange(PRIMARY_ELEMENTS)
 }
 
-function createQuestion() {
+function createQuestion(difficulty: Difficulty) {
   const eleAppearance = getRandomElement()
   const eleLitrality = getRandomElement()
+  let target: any
+  const [target1, target2] = TARGET
+  if (difficulty === Difficulty.EASY) {
+    target = target1
+  } else if (difficulty === Difficulty.NORMAL) {
+    target = target2
+  } else {
+    target = (() => getRandomInRange(TARGET))()
+  }
+
+  console.log(target)
+
   return {
-    targetValue: 0,
-    targetText: 'color',
+    target,
     descriptionText: eleLitrality.text,
     value: {
       appearance: eleAppearance.value.appearance,
@@ -22,14 +39,17 @@ function createQuestion() {
 }
 
 function verifyAnswer(question: Question, answer: Answer) {
-  if (question.targetValue === 0) {
-    return question.value.appearance === answer
+  if (question.target.value === Target.LITERALITY) {
+    return question.value.literality === answer.literality
   }
-  return question.value.literality === answer
+  return question.value.appearance === answer.appearance
 }
 
 export type Question = ReturnType<typeof createQuestion>
-export type Answer = number
+export type Answer = {
+  appearance: number
+  literality: number
+}
 export enum Status {
   READY = 0,
   RUNNING,
@@ -42,6 +62,7 @@ export type State = {
   score: number
   status: Status
   progress: number
+  difficulty: number
 }
 
 export type StoreValue = {
@@ -50,12 +71,13 @@ export type StoreValue = {
 }
 
 const initialState: State = {
-  question: createQuestion(),
+  question: createQuestion(DEFAULT_DIFFICULTY),
   answer: undefined,
   match: false,
   score: 0,
   status: Status.READY,
   progress: 0,
+  difficulty: DEFAULT_DIFFICULTY,
 }
 
 export const Store = React.createContext<StoreValue>({
@@ -70,6 +92,7 @@ function reducer(state: any, action: any) {
         return {
           ...state,
           status: Status.RUNNING,
+          question: createQuestion(state.difficulty),
         }
       }
       return state
@@ -77,7 +100,7 @@ function reducer(state: any, action: any) {
     case 'CREATE_QUESTION':
       return {
         ...state,
-        question: createQuestion(),
+        question: createQuestion(state.difficulty),
       }
     case 'FILL_ANSWER':
       return {
@@ -86,9 +109,8 @@ function reducer(state: any, action: any) {
       }
     case 'VERIFY_ANSWER': {
       const match = verifyAnswer(state.question, state.answer)
-      let { score, status, progress } = state
+      let { score, status } = state
       score += match ? 1 : -1
-      progress = 0
       if (score < 0) {
         score = 0
         status = Status.FAILED
@@ -98,7 +120,7 @@ function reducer(state: any, action: any) {
         match,
         score,
         status,
-        progress,
+        progress: 0,
       }
     }
     case 'PROGRESS_FORWARD':
@@ -107,12 +129,16 @@ function reducer(state: any, action: any) {
         progress: state.progress + 1,
       }
     case 'FAIL_GAME': {
-      console.log('fail game')
-
       return {
         ...state,
         progress: 0,
         status: Status.FAILED,
+      }
+    }
+    case 'CHANGE_DIFFICULTY': {
+      return {
+        ...state,
+        difficulty: action.payload,
       }
     }
     default:
