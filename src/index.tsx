@@ -5,6 +5,7 @@ import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 import { StoreProvider } from './context'
+import './i18n'
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,0 +1,21 @@
+{
+  "score": "分数",
+  "game": "游戏",
+  "you failed!": "你失败啦！",
+  "easy": "容易",
+  "normal": "普通",
+  "hard": "困难",
+  "start": "开始",
+  "color": "颜色",
+  "meaning": "意思",
+  "red": "红色",
+  "yellow": "黄色",
+  "green": "绿色",
+  "blue": "蓝色",
+  "question": "<3><0>{{descriptionText}}</0></3>的<1>{{target}}</1>是？",
+  "settings": "设置",
+  "language": "语言",
+  "english": "英文",
+  "chinese": "中文",
+  "myanmar": "缅甸文"
+}

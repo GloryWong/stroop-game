@@ -1,0 +1,21 @@
+{
+  "score": "Score",
+  "game": "Game",
+  "you failed!": "You failed!",
+  "easy": "Easy",
+  "normal": "Normal",
+  "hard": "Hard",
+  "start": "Start",
+  "color": "color",
+  "meaning": "meaning",
+  "red": "RED",
+  "yellow": "YELLOW",
+  "green": "GREEN",
+  "blue": "BLUE",
+  "question": "The <1>{{target}}</1> of <3><0>{{descriptionText}}</0></3> is?",
+  "settings": "Settings",
+  "language": "Language",
+  "english": "English",
+  "chinese": "Chinese",
+  "myanmar": "Myanmar"
+}
