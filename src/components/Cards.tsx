@@ -6,12 +6,12 @@ export default function Cards() {
   const { dispatch } = useContext(Store)
 
   function createCards() {
-    return PRIMARY_ELEMENTS.map(({ color, value }) => (
+    return PRIMARY_ELEMENTS.map(({ bgColor, value }) => (
       // eslint-disable-next-line jsx-a11y/control-has-associated-label
       <button
         key={value.appearance}
         type="button"
-        className={`bg-${color} rounded-3xl shadow hover:shadow-md transform scale-100 hover:scale-110 transition-all`}
+        className={`${bgColor} rounded-3xl shadow hover:shadow-md transform scale-100 hover:scale-110 transition-all`}
         onClick={() => handleClick(value)}
       />
     ))

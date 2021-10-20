@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Component, useCallback, useContext, useEffect, useState } from 'react'
-import { Store, Status } from '../context'
+import { useContext } from 'react'
+import { Store } from '../context'
 import './Progress.css'
 
 export default function Progress() {

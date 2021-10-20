@@ -1,7 +1,10 @@
+import { ValueOf } from 'type-fest'
+
 export const PRIMARY_ELEMENTS = [
   {
     text: 'RED',
-    color: 'red',
+    color: 'text-red-400',
+    bgColor: 'bg-red-400',
     value: {
       appearance: 0,
       literality: 4,
@@ -9,7 +12,8 @@ export const PRIMARY_ELEMENTS = [
   },
   {
     text: 'YELLOW',
-    color: 'yellow',
+    color: 'text-yellow-400',
+    bgColor: 'bg-yellow-400',
     value: {
       appearance: 1,
       literality: 5,
@@ -17,7 +21,8 @@ export const PRIMARY_ELEMENTS = [
   },
   {
     text: 'GREEN',
-    color: 'green',
+    color: 'text-green-400',
+    bgColor: 'bg-green-400',
     value: {
       appearance: 2,
       literality: 6,
@@ -25,41 +30,47 @@ export const PRIMARY_ELEMENTS = [
   },
   {
     text: 'BLUE',
-    color: 'blue',
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-400',
     value: {
       appearance: 3,
       literality: 7,
     },
   },
-].map((v) => ({ ...v, color: `${v.color}-400` }))
+]
+
+/** *********************
+ * Status
+ *********************** */
+
+export const STATUS = {
+  READY: 0,
+  RUNNING: 1,
+  FAILED: 2,
+}
+
+export type Status = ValueOf<typeof STATUS>
 
 /** *********************
  * Target
  *********************** */
-export enum Target {
-  LITERALITY = 0,
-  COLOR = 1,
+
+export const TARGET = {
+  LITERALITY: 'literality',
+  COLOR: 'color',
 }
 
-export const TARGET = [
-  { value: Target.LITERALITY, text: 'literality' },
-  { value: Target.COLOR, text: 'color' },
-]
+export type Target = ValueOf<typeof TARGET>
 
 /** ******************************
  * Difficulty
  ******************************* */
 
-export enum Difficulty {
-  EASY = 0, // Appearance
-  NORMAL, // Literality
-  HARD, // Mix
+export const DIFFICULTY = {
+  EASY: 'Easy',
+  NORMAL: 'Normal',
+  HARD: 'Hard',
 }
 
-export const DIFFICULTY = [
-  { value: Difficulty.EASY, title: 'Easy' },
-  { value: Difficulty.NORMAL, title: 'Normal' },
-  { value: Difficulty.HARD, title: 'Hard' },
-]
-
-export const DEFAULT_DIFFICULTY = Difficulty.EASY
+export type Difficulty = ValueOf<typeof DIFFICULTY>
+export const DEFAULT_DIFFICULTY = DIFFICULTY.EASY

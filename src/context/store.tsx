@@ -2,8 +2,10 @@ import React from 'react'
 import { getRandomInRange } from '../utils'
 import {
   PRIMARY_ELEMENTS,
+  Status,
+  STATUS,
   TARGET,
-  Target,
+  DIFFICULTY,
   Difficulty,
   DEFAULT_DIFFICULTY,
 } from '../constants'
@@ -16,16 +18,13 @@ function createQuestion(difficulty: Difficulty) {
   const eleAppearance = getRandomElement()
   const eleLitrality = getRandomElement()
   let target: any
-  const [target1, target2] = TARGET
-  if (difficulty === Difficulty.EASY) {
-    target = target1
-  } else if (difficulty === Difficulty.NORMAL) {
-    target = target2
+  if (difficulty === DIFFICULTY.EASY) {
+    target = TARGET.LITERALITY
+  } else if (difficulty === DIFFICULTY.NORMAL) {
+    target = TARGET.COLOR
   } else {
-    target = (() => getRandomInRange(TARGET))()
+    target = (() => getRandomInRange(Object.values(TARGET)))()
   }
-
-  console.log(target)
 
   return {
     target,
@@ -39,7 +38,7 @@ function createQuestion(difficulty: Difficulty) {
 }
 
 function verifyAnswer(question: Question, answer: Answer) {
-  if (question.target.value === Target.LITERALITY) {
+  if (question.target === TARGET.LITERALITY) {
     return question.value.literality === answer.literality
   }
   return question.value.appearance === answer.appearance
@@ -50,19 +49,15 @@ export type Answer = {
   appearance: number
   literality: number
 }
-export enum Status {
-  READY = 0,
-  RUNNING,
-  FAILED,
-}
+
 export type State = {
   question: Question
-  answer: Answer | undefined
+  answer: Answer
   match: boolean
   score: number
   status: Status
   progress: number
-  difficulty: number
+  difficulty: Difficulty
 }
 
 export type StoreValue = {
@@ -72,10 +67,13 @@ export type StoreValue = {
 
 const initialState: State = {
   question: createQuestion(DEFAULT_DIFFICULTY),
-  answer: undefined,
+  answer: {
+    appearance: 0,
+    literality: 0,
+  },
   match: false,
   score: 0,
-  status: Status.READY,
+  status: STATUS.READY,
   progress: 0,
   difficulty: DEFAULT_DIFFICULTY,
 }
@@ -85,13 +83,13 @@ export const Store = React.createContext<StoreValue>({
   dispatch: null,
 })
 
-function reducer(state: any, action: any) {
+function reducer(state: State, action: any) {
   switch (action.type) {
     case 'START_GAME': {
-      if (state.status === Status.READY || state.status === Status.FAILED) {
+      if (state.status === STATUS.READY || state.status === STATUS.FAILED) {
         return {
           ...initialState,
-          status: Status.RUNNING,
+          status: STATUS.RUNNING,
           question: createQuestion(state.difficulty),
         }
       }
@@ -113,7 +111,7 @@ function reducer(state: any, action: any) {
       score += match ? 1 : -1
       if (score < 0) {
         score = 0
-        status = Status.FAILED
+        status = STATUS.FAILED
       }
       return {
         ...state,
@@ -132,7 +130,7 @@ function reducer(state: any, action: any) {
       return {
         ...state,
         progress: 0,
-        status: Status.FAILED,
+        status: STATUS.FAILED,
       }
     }
     case 'CHANGE_DIFFICULTY': {
@@ -158,13 +156,13 @@ export function StoreProvider({ children }: any) {
     clearInterval(tid)
     tid = 0
   }
-  if (state.status === Status.RUNNING && !tid) {
+  if (state.status === STATUS.RUNNING && !tid) {
     tid = window.setInterval(() => {
       dispatch({
         type: 'PROGRESS_FORWARD',
       })
     }, 50)
-  } else if (state.status !== Status.RUNNING) {
+  } else if (state.status !== STATUS.RUNNING) {
     clearInterval(tid)
     tid = 0
   }

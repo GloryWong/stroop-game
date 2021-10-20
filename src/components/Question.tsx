@@ -6,8 +6,8 @@ export default function Title() {
   const { question } = state
   return (
     <div>
-      The <span className="font-bold">{question.target.text}</span> of the&nbsp;
-      <span className={`text-${question.color} font-bold`}>
+      The <span className="font-bold">{question.target}</span> of the&nbsp;
+      <span className={`${question.color} font-bold`}>
         {question.descriptionText}
       </span>
       &nbsp;is?

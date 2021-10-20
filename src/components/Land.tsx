@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FormEvent, useContext } from 'react'
-import { PRIMARY_ELEMENTS, DIFFICULTY, DEFAULT_DIFFICULTY } from '../constants'
-import { Store, Status } from '../context'
+import { DIFFICULTY, STATUS, DEFAULT_DIFFICULTY } from '../constants'
+import { Store } from '../context'
 
 export default function Land() {
-  const colors = PRIMARY_ELEMENTS.map((v) => v.color)
   const { state, dispatch } = useContext(Store)
   function handleClick() {
     ;(dispatch as React.Dispatch<any>)({
@@ -15,13 +14,13 @@ export default function Land() {
   function handleDifficultyChange(e: FormEvent) {
     ;(dispatch as React.Dispatch<any>)({
       type: 'CHANGE_DIFFICULTY',
-      payload: Number((e.target as HTMLInputElement).value),
+      payload: (e.target as HTMLInputElement).value,
     })
   }
   return (
     <div
-      className={`land w-screen h-screen bg-black bg-opacity-90 absolute top-0 left-0 transition-all transform flex flex-col justify-center items-center scale-${
-        state.status === Status.RUNNING ? '0' : '100'
+      className={`land w-screen h-screen bg-black bg-opacity-90 absolute top-0 left-0 transition-all transform flex flex-col justify-center items-center ${
+        state.status === STATUS.RUNNING ? 'scale-0' : 'scale-100'
       }`}
     >
       <div className="mb-5 text-3xl text-gray-200">
@@ -29,7 +28,7 @@ export default function Land() {
       </div>
       <div
         className={`status mb-5 p-3 border-2 border-red-300 rounded-2xl ${
-          state.status === Status.FAILED ? '' : 'hidden'
+          state.status === STATUS.FAILED ? '' : 'hidden'
         }`}
       >
         <div className="text-red-500 text-2xl">You failed!</div>
@@ -40,7 +39,7 @@ export default function Land() {
           onChange={handleDifficultyChange}
           className="flex flex-col items-start sm:flex-row"
         >
-          {DIFFICULTY.map(({ value, title }) => (
+          {Object.values(DIFFICULTY).map((value) => (
             <label key={value} className="ml-2 mr-2 mt-2 mb-2 cursor-pointer">
               <input
                 className=""
@@ -49,14 +48,14 @@ export default function Land() {
                 value={value}
                 defaultChecked={value === DEFAULT_DIFFICULTY}
               />
-              &nbsp;{title}
+              &nbsp;{value}
             </label>
           ))}
         </form>
       </div>
       <button
         type="button"
-        className={`text-6xl transition transform scale-100 hover:scale-110 rounded-2xl p-5 text-gray-200 bg-gradient-to-tr from-${colors[0]} via-${colors[1]} via-${colors[2]} to-${colors[3]}`}
+        className="text-6xl transition transform scale-100 hover:scale-110 rounded-2xl p-5 text-gray-200 bg-gradient-to-tr from-red-400 via-yellow-400 via-green-400 to-blue-400"
         onClick={handleClick}
       >
         START
