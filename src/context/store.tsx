@@ -90,7 +90,7 @@ function reducer(state: any, action: any) {
     case 'START_GAME': {
       if (state.status === Status.READY || state.status === Status.FAILED) {
         return {
-          ...state,
+          ...initialState,
           status: Status.RUNNING,
           question: createQuestion(state.difficulty),
         }
