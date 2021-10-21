@@ -3,7 +3,7 @@
 import React, { FormEvent, useState, useContext } from 'react'
 import { DIFFICULTY, STATUS, DEFAULT_DIFFICULTY } from '../constants'
 import { Store } from '../context'
-import i18n, { useTranslation } from '../i18n'
+import { useTranslation } from '../i18n'
 import Settings from './Settings'
 
 export default function Land() {

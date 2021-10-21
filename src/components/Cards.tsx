@@ -6,21 +6,37 @@ export default function Cards() {
   const { dispatch } = useContext(Store)
 
   function createCards() {
-    const noneRounded = [
-      'rounded-br-none',
-      'rounded-bl-none',
-      'rounded-tr-none',
-      'rounded-tl-none',
+    const cardModifies = [
+      {
+        noneRounded: 'rounded-br-none',
+        transformOrigin: 'origin-bottom-right',
+      },
+      {
+        noneRounded: 'rounded-bl-none',
+        transformOrigin: 'origin-bottom-left',
+      },
+      {
+        noneRounded: 'rounded-tr-none',
+        transformOrigin: 'origin-top-right',
+      },
+      {
+        noneRounded: 'rounded-tl-none',
+        transformOrigin: 'origin-top-left',
+      },
     ]
-    return PRIMARY_ELEMENTS.map(({ bgColor, value }, index) => (
-      // eslint-disable-next-line jsx-a11y/control-has-associated-label
-      <button
-        key={value.appearance}
-        type="button"
-        className={`${bgColor} rounded-3xl ${noneRounded[index]} shadow hover:shadow-md transform scale-100 hover:scale-110 transition-all`}
-        onClick={() => handleClick(value)}
-      />
-    ))
+    return PRIMARY_ELEMENTS.map(({ bgColor, value }, index) => {
+      const { noneRounded, transformOrigin } = cardModifies[index]
+
+      return (
+        // eslint-disable-next-line jsx-a11y/control-has-associated-label
+        <button
+          key={value.appearance}
+          type="button"
+          className={`${bgColor} rounded-3xl ${noneRounded} shadow hover:shadow-md transform ${transformOrigin} scale-100 hover:scale-110 transition-all`}
+          onClick={() => handleClick(value)}
+        />
+      )
+    })
   }
 
   function handleClick(value: any) {
