@@ -1,30 +1,45 @@
 import i18n from 'i18next'
 import { useTranslation, initReactI18next, Trans } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
-import en from './locales/en.json'
-import cn from './locales/cn.json'
-import mm from './locales/mm.json'
+import Backend from 'i18next-chained-backend'
+import LocalStorageBackend from 'i18next-localstorage-backend'
+import HttpApi from 'i18next-http-backend'
 
 i18n
   .use(LanguageDetector)
+  .use(Backend)
   .use(initReactI18next)
   .init({
-    resources: {
-      en: {
-        translation: en,
-      },
-      cn: {
-        translation: cn,
-      },
-      mm: {
-        translation: mm,
-      },
+    backend: {
+      backends: [LocalStorageBackend, HttpApi],
+      backendOptions: [
+        {
+          prefix: 'i18next_res_',
+          expirationTime: 7 * 24 * 60 * 60 * 1000,
+        },
+        {
+          loadPath: '/locales/{{lng}}.json',
+        },
+      ],
     },
+    // resources: {
+    //   en: {
+    //     translation: en,
+    //   },
+    //   cn: {
+    //     translation: cn,
+    //   },
+    //   mm: {
+    //     translation: mm,
+    //   },
+    // },
     // lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },
+    debug: true,
   })
+// console.log(i18n)
 
 export { i18n as default, useTranslation, Trans }

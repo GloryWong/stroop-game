@@ -17,6 +17,26 @@ export default function Settings({ visible, setVisible }: Props) {
   }
 
   const { t } = useTranslation()
+  const languageOptions = [
+    {
+      flag: '🇬🇧',
+      value: 'en',
+      name: t('english'),
+      rawName: 'English',
+    },
+    {
+      flag: '🇨🇳',
+      value: 'cn',
+      name: t('chinese'),
+      rawName: '中文',
+    },
+    {
+      flag: '🇲🇲',
+      value: 'mm',
+      name: t('myanmar'),
+      rawName: 'ဗမာ',
+    },
+  ]
 
   return (
     <div
@@ -51,15 +71,11 @@ export default function Settings({ visible, setVisible }: Props) {
                 name="language"
                 onChange={handleLanguageChange}
               >
-                <option value="en">
-                  🇬🇧&nbsp;&nbsp;{t('english')}&nbsp;(English)
-                </option>
-                <option value="cn">
-                  🇨🇳&nbsp;&nbsp;{t('chinese')}&nbsp;(中文)
-                </option>
-                <option value="mm">
-                  🇲🇲&nbsp;&nbsp;{t('myanmar')}&nbsp;(ဗမာ)
-                </option>
+                {languageOptions.map(({ flag, value, name, rawName }) => (
+                  <option key={value} value={value}>
+                    {flag}&nbsp;&nbsp;{name}&nbsp;({rawName})
+                  </option>
+                ))}
               </select>
             </div>
           </label>

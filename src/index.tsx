@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
@@ -6,11 +6,14 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 import { StoreProvider } from './context'
 import './i18n'
+import Loader from './components/Loader'
 
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
-      <App />
+      <Suspense fallback={<Loader />}>
+        <App />
+      </Suspense>
     </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
