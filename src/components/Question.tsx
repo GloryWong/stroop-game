@@ -10,7 +10,10 @@ export default function Title() {
   return (
     <div>
       <Trans i18nKey="question">
-        The <span className="font-bold">{{ target: t(question.target) }}</span>
+        The
+        <span className="underline font-bold">
+          {{ target: t(question.target) }}
+        </span>
         &nbsp;of the&nbsp;
         <span className={`${question.color} font-bold`}>
           {{ descriptionText: t(question.descriptionText.toLowerCase()) }}

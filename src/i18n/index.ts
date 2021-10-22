@@ -16,24 +16,13 @@ i18n
         {
           prefix: 'i18next_res_',
           expirationTime: 7 * 24 * 60 * 60 * 1000,
+          defaultVersion: 'v1.3',
         },
         {
           loadPath: '/locales/{{lng}}.json',
         },
       ],
     },
-    // resources: {
-    //   en: {
-    //     translation: en,
-    //   },
-    //   cn: {
-    //     translation: cn,
-    //   },
-    //   mm: {
-    //     translation: mm,
-    //   },
-    // },
-    // lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,

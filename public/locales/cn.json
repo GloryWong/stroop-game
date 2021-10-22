@@ -12,7 +12,7 @@
   "yellow": "黄色",
   "green": "绿色",
   "blue": "蓝色",
-  "question": "<3><0>{{descriptionText}}</0></3>的<1>{{target}}</1>是？",
+  "question": "词语“<3><0>{{descriptionText}}</0></3>”的<1>{{target}}</1>是？",
   "settings": "设置",
   "language": "语言",
   "english": "英文",

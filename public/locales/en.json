@@ -12,7 +12,7 @@
   "yellow": "YELLOW",
   "green": "GREEN",
   "blue": "BLUE",
-  "question": "The <1>{{target}}</1> of <3><0>{{descriptionText}}</0></3> is?",
+  "question": "What is the <1>{{target}}</1> of the word \"<3><0>{{descriptionText}}</0></3>\"?",
   "settings": "Settings",
   "language": "Language",
   "english": "English",

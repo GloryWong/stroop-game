@@ -26,7 +26,7 @@ export default function Land() {
 
   return (
     <div
-      className={`land w-screen h-screen bg-black bg-opacity-90 absolute top-0 left-0 transition-all transform flex flex-col justify-center items-center ${
+      className={`land w-screen h-screen bg-gray-100 absolute top-0 left-0 transition-all transform flex flex-col justify-center items-center ${
         state.status === STATUS.RUNNING ? 'scale-0' : 'scale-100'
       }`}
     >
@@ -38,10 +38,10 @@ export default function Land() {
             setSettingsVisible(true)
           }}
         >
-          <span className="material-icons text-gray-300">settings</span>
+          <span className="material-icons text-gray-500 ">settings</span>
         </button>
       </div>
-      <div className="mb-5 text-3xl text-gray-200">
+      <div className="mb-5 text-3xl text-gray-500">
         <span>Stroop {t('game')}</span>
         <span className="text-xl ml-1.5">v1.2</span>
       </div>
@@ -53,11 +53,11 @@ export default function Land() {
         <div className="text-red-500 text-2xl">
           {t('You failed!'.toLowerCase())}
         </div>
-        <div className="text-gray-200 ">
+        <div className="text-gray-500 ">
           {t('Score'.toLowerCase())}: {state.score}
         </div>
       </div>
-      <div className="difficulty mb-8 text-gray-300 text-3xl border-2 border-gray-300 p-5 rounded-3xl">
+      <div className="difficulty mb-8 text-gray-500 text-3xl border-2 border-gray-300 p-5 rounded-3xl">
         <form
           onChange={handleDifficultyChange}
           className="flex flex-col items-start sm:flex-row"
@@ -78,7 +78,7 @@ export default function Land() {
       </div>
       <button
         type="button"
-        className="text-6xl transition transform scale-100 hover:scale-110 rounded-2xl p-5 text-gray-200 bg-gradient-to-tr from-red-400 via-yellow-400 via-green-400 to-blue-400"
+        className="text-6xl transition transform scale-100 hover:scale-110 rounded-2xl p-5 text-gray-100 bg-gradient-to-tr from-red-400 via-yellow-400 via-green-400 to-blue-400"
         onClick={handleClick}
       >
         {t('start')}

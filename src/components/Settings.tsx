@@ -45,7 +45,7 @@ export default function Settings({ visible, setVisible }: Props) {
       }`}
     >
       <div
-        className={`container p-5 shadow-lg rounded-3xl bg-gray-100 w-11/12 sm:w-9/12 md:w-60
+        className={`container p-5 shadow-lg rounded-3xl bg-gray-100 w-80
         `}
       >
         <div className="head relative h-5">

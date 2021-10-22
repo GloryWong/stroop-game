@@ -12,7 +12,7 @@
   "yellow": "အဝါရောင်",
   "green": "အစိမ်းရောင်",
   "blue": "အပြာရောင်",
-  "question": "<3><0>{{descriptionText}}</0></3>ဘယ်<1>{{target}}</1>လဲ။？",
+  "question": "\"<3><0>{{descriptionText}}</0></3>\"ဘယ်<1>{{target}}</1>လဲ။？",
   "settings": "ဆက်တင်များ",
   "language": "ဘာသာစကား",
   "english": "အင်္ဂလိပ်စာ",
