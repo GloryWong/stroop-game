@@ -37,6 +37,7 @@ export default function Settings({ visible, setVisible }: Props) {
       rawName: 'ဗမာ',
     },
   ]
+  const { resolvedLanguage } = i18n
 
   return (
     <div
@@ -70,6 +71,7 @@ export default function Settings({ visible, setVisible }: Props) {
                 className="form-control"
                 name="language"
                 onChange={handleLanguageChange}
+                value={resolvedLanguage}
               >
                 {languageOptions.map(({ flag, value, name, rawName }) => (
                   <option key={value} value={value}>
