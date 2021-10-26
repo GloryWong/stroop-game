@@ -27,7 +27,9 @@ export default function Land() {
   return (
     <div
       className={`land w-screen h-screen bg-gray-100 absolute top-0 left-0 transition-all transform flex flex-col justify-center items-center ${
-        state.status === STATUS.RUNNING ? 'scale-0' : 'scale-100'
+        state.status === STATUS.RUNNING
+          ? 'scale-0 bg-opacity-0'
+          : 'scale-100 bg-opacity-100'
       }`}
     >
       <div className="menu absolute top-0 left-0 mt-5 ml-5">

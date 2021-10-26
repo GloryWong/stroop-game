@@ -41,8 +41,8 @@ export default function Settings({ visible, setVisible }: Props) {
 
   return (
     <div
-      className={`model absolute flex justify-center items-center w-screen h-screen bg-opacity-30 bg-black transition transform ${
-        visible ? 'scale-100' : 'scale-0'
+      className={`model absolute flex justify-center items-center w-screen h-screen bg-black transition-all transform ${
+        visible ? 'scale-100 bg-opacity-30' : 'scale-0 bg-opacity-0'
       }`}
     >
       <div
