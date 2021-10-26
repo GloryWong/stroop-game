@@ -24,7 +24,7 @@ export default function Cards() {
         transformOrigin: 'origin-top-left',
       },
     ]
-    return PRIMARY_ELEMENTS.map(({ bgColor, value }, index) => {
+    return PRIMARY_ELEMENTS.map(({ bgColor, darkBgColor, value }, index) => {
       const { noneRounded, transformOrigin } = cardModifies[index]
 
       return (
@@ -32,7 +32,7 @@ export default function Cards() {
         <button
           key={value.appearance}
           type="button"
-          className={`${bgColor} rounded-3xl ${noneRounded} shadow hover:shadow-md transform ${transformOrigin} scale-100 hover:scale-110 transition-all`}
+          className={`${bgColor} dark:${darkBgColor} rounded-3xl ${noneRounded} shadow hover:shadow-md transform ${transformOrigin} scale-100 hover:scale-110 transition-all`}
           onClick={() => handleClick(value)}
         />
       )

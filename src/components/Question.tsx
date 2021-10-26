@@ -8,14 +8,16 @@ export default function Title() {
   const { t } = useTranslation()
 
   return (
-    <div>
+    <div className="text-gray-900 dark:text-gray-300">
       <Trans i18nKey="question">
         The
         <span className="underline font-bold">
           {{ target: t(question.target) }}
         </span>
         &nbsp;of the&nbsp;
-        <span className={`${question.color} font-bold`}>
+        <span
+          className={`${question.color} dark:${question.darkColor} font-bold`}
+        >
           {{ descriptionText: t(question.descriptionText.toLowerCase()) }}
         </span>
         &nbsp;is?

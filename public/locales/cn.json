@@ -18,5 +18,11 @@
   "english": "英文",
   "chinese": "中文",
   "myanmar": "缅甸文",
-  "close": "关闭"
+  "close": "关闭",
+  "appearence": {
+    "theme": "主题",
+    "default": "默认",
+    "dark": "夜晚模式",
+    "auto": "跟随系统"
+  }
 }

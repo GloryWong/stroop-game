@@ -34,6 +34,7 @@ function createQuestion(difficulty: Difficulty) {
       meaning: eleLitrality.value.meaning,
     },
     color: eleAppearance.color,
+    darkColor: eleAppearance.darkColor,
   }
 }
 

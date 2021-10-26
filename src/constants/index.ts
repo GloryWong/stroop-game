@@ -3,8 +3,10 @@ import { ValueOf } from 'type-fest'
 export const PRIMARY_ELEMENTS = [
   {
     text: 'RED',
-    color: 'text-red-400',
-    bgColor: 'bg-red-400',
+    color: 'text-red',
+    bgColor: 'bg-red',
+    darkColor: 'text-red-dark',
+    darkBgColor: 'bg-red-dark',
     value: {
       appearance: 0,
       meaning: 4,
@@ -12,8 +14,10 @@ export const PRIMARY_ELEMENTS = [
   },
   {
     text: 'YELLOW',
-    color: 'text-yellow-400',
-    bgColor: 'bg-yellow-400',
+    color: 'text-yellow',
+    bgColor: 'bg-yellow',
+    darkColor: 'text-yellow-dark',
+    darkBgColor: 'bg-yellow-dark',
     value: {
       appearance: 1,
       meaning: 5,
@@ -21,8 +25,10 @@ export const PRIMARY_ELEMENTS = [
   },
   {
     text: 'GREEN',
-    color: 'text-green-400',
-    bgColor: 'bg-green-400',
+    color: 'text-green',
+    bgColor: 'bg-green',
+    darkColor: 'text-green-dark',
+    darkBgColor: 'bg-green-dark',
     value: {
       appearance: 2,
       meaning: 6,
@@ -30,8 +36,10 @@ export const PRIMARY_ELEMENTS = [
   },
   {
     text: 'BLUE',
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-400',
+    color: 'text-blue',
+    bgColor: 'bg-blue',
+    darkColor: 'text-blue-dark',
+    darkBgColor: 'bg-blue-dark',
     value: {
       appearance: 3,
       meaning: 7,

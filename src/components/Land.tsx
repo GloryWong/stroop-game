@@ -6,6 +6,8 @@ import { Store } from '../context'
 import { useTranslation } from '../i18n'
 import Settings from './Settings'
 
+const VERSION = '1.4'
+
 export default function Land() {
   const { state, dispatch } = useContext(Store)
   const { t } = useTranslation()
@@ -26,11 +28,13 @@ export default function Land() {
 
   return (
     <div
-      className={`land w-screen h-screen bg-gray-100 absolute top-0 left-0 transition-all transform flex flex-col justify-center items-center ${
+      className={`land w-screen h-screen bg-bg dark:bg-bg-dark absolute top-0 left-0 transition-all transform flex flex-col justify-center items-center
+      ${
         state.status === STATUS.RUNNING
           ? 'scale-0 bg-opacity-0'
           : 'scale-100 bg-opacity-100'
-      }`}
+      }
+      `}
     >
       <div className="menu absolute top-0 left-0 mt-5 ml-5">
         <button
@@ -40,26 +44,28 @@ export default function Land() {
             setSettingsVisible(true)
           }}
         >
-          <span className="material-icons text-gray-500 ">settings</span>
+          <span className="material-icons text-gray-500 dark:text-gray-600">
+            settings
+          </span>
         </button>
       </div>
-      <div className="mb-5 text-3xl text-gray-500">
+      <div className="mb-5 text-3xl text-gray-500 dark:text-gray-600">
         <span>Stroop {t('game')}</span>
-        <span className="text-xl ml-1.5">v1.2</span>
+        <span className="text-xl ml-1.5">v{VERSION}</span>
       </div>
       <div
-        className={`status mb-5 p-3 border-2 border-red-300 rounded-2xl ${
+        className={`status mb-5 p-3 border-2 border-red-300 dark:border-red-900 rounded-2xl ${
           state.status === STATUS.FAILED ? '' : 'hidden'
         }`}
       >
-        <div className="text-red-500 text-2xl">
+        <div className="text-red-500 dark:text-red-800 text-2xl">
           {t('You failed!'.toLowerCase())}
         </div>
-        <div className="text-gray-500 ">
+        <div className="text-gray-500 dark:text-gray-600">
           {t('Score'.toLowerCase())}: {state.score}
         </div>
       </div>
-      <div className="difficulty mb-8 text-gray-500 text-3xl border-2 border-gray-300 p-5 rounded-3xl">
+      <div className="difficulty mb-8 text-gray-500 dark:text-gray-600 text-3xl border-2 border-gray-300 dark:border-gray-700 p-5 rounded-3xl">
         <form
           onChange={handleDifficultyChange}
           className="flex flex-col items-start sm:flex-row"
@@ -80,7 +86,7 @@ export default function Land() {
       </div>
       <button
         type="button"
-        className="text-6xl transition transform scale-100 hover:scale-110 rounded-2xl p-5 text-gray-100 bg-gradient-to-tr from-red-400 via-yellow-400 via-green-400 to-blue-400"
+        className="text-6xl transition transform scale-100 hover:scale-110 rounded-2xl p-5 text-gray-100 dark:text-gray-400 bg-gradient-to-tr from-red  dark:from-red-dark via-yellow dark:via-yellow-dark via-green dark:via-green-dark to-blue dark:to-blue-dark"
         onClick={handleClick}
       >
         {t('start')}

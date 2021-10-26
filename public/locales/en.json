@@ -18,5 +18,11 @@
   "english": "English",
   "chinese": "Chinese",
   "myanmar": "Myanmar",
-  "close": "CLOSE"
+  "close": "CLOSE",
+  "appearence": {
+    "theme": "Theme",
+    "default": "Default",
+    "dark": "Dark",
+    "auto": "Auto"
+  }
 }

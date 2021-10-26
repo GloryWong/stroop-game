@@ -11,9 +11,9 @@ export default function Progress() {
   return (
     <div className="progress m-5 w-3/4">
       <div className="progress-bar">
-        <div className="bg-gray-300 w-full h-3 rounded-full overflow-hidden">
+        <div className="bg-gray-300 dark:bg-gray-700 w-full h-3 rounded-full overflow-hidden">
           <div
-            className="bg-gradient-to-r from-transparent to-gray-500 h-full w-full rounded-full transition-all"
+            className="bg-gradient-to-r from-transparent to-gray-500 dark:to-gray-500 h-full w-full rounded-full transition-all"
             style={{ width: `${state.progress}%` }}
           />
         </div>

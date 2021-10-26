@@ -16,7 +16,7 @@ i18n
         {
           prefix: 'i18next_res_',
           expirationTime: 7 * 24 * 60 * 60 * 1000,
-          defaultVersion: 'v1.3',
+          defaultVersion: 'v1.4',
         },
         {
           loadPath: '/locales/{{lng}}.json',
