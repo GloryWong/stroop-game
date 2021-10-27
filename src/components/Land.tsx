@@ -5,8 +5,10 @@ import { DIFFICULTY, STATUS, DEFAULT_DIFFICULTY } from '../constants'
 import { Store } from '../context'
 import { useTranslation } from '../i18n'
 import Settings from './Settings'
+import Intro from './Intro'
+import Help from './Help'
 
-const VERSION = '1.4'
+const VERSION = '1.5'
 
 export default function Land() {
   const { state, dispatch } = useContext(Store)
@@ -25,6 +27,29 @@ export default function Land() {
   }
 
   const [settingsVisible, setSettingsVisible] = useState(false)
+  const [introVisible, setIntroVisible] = useState(false)
+  const [helpVisible, setHelpVisible] = useState(false)
+
+  const menuConfig = [
+    {
+      onClick: () => {
+        setSettingsVisible(true)
+      },
+      iconIndicator: 'settings',
+    },
+    {
+      onClick: () => {
+        setIntroVisible(true)
+      },
+      iconIndicator: 'info',
+    },
+    {
+      onClick: () => {
+        setHelpVisible(true)
+      },
+      iconIndicator: 'help',
+    },
+  ]
 
   return (
     <div
@@ -36,18 +61,19 @@ export default function Land() {
       }
       `}
     >
-      <div className="menu absolute top-0 left-0 mt-5 ml-5">
-        <button
-          type="button"
-          className="absolute transition transform hover:rotate-180 flex justify-center items-center"
-          onClick={() => {
-            setSettingsVisible(true)
-          }}
-        >
-          <span className="material-icons text-gray-500 dark:text-gray-600">
-            settings
-          </span>
-        </button>
+      <div className="menu absolute top-0 left-0 mt-5 ml-5 flex flex-col">
+        {menuConfig.map(({ onClick, iconIndicator }) => (
+          <button
+            type="button"
+            key={iconIndicator}
+            className="flex justify-center items-center mb-5"
+            onClick={onClick}
+          >
+            <span className="material-icons text-gray-500 dark:text-gray-600">
+              {iconIndicator}
+            </span>
+          </button>
+        ))}
       </div>
       <div className="mb-5 text-3xl text-gray-500 dark:text-gray-600">
         <span>Stroop {t('game')}</span>
@@ -92,6 +118,8 @@ export default function Land() {
         {t('start')}
       </button>
       <Settings visible={settingsVisible} setVisible={setSettingsVisible} />
+      <Intro visible={introVisible} setVisible={setIntroVisible} />
+      <Help visible={helpVisible} setVisible={setHelpVisible} />
     </div>
   )
 }

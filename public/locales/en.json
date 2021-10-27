@@ -24,5 +24,11 @@
     "default": "Default",
     "dark": "Dark",
     "auto": "Auto"
+  },
+  "intro": {
+    "intro": "Introduction"
+  },
+  "help": {
+    "help": "Help"
   }
 }

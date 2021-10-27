@@ -2,13 +2,9 @@
 import { ChangeEvent } from 'react'
 import i18n, { useTranslation } from '../i18n'
 import useTheme from '../hooks/useTheme'
+import Model, { Props as ModelProps } from './common/Model'
 
-type Props = {
-  visible: boolean
-  setVisible: (value: boolean) => void
-}
-
-export default function Settings({ visible, setVisible }: Props) {
+export default function Settings({ visible, setVisible }: ModelProps) {
   const { t } = useTranslation()
   const { theme, setTheme } = useTheme()
 
@@ -60,71 +56,37 @@ export default function Settings({ visible, setVisible }: Props) {
   ]
 
   return (
-    <div
-      className={`model absolute text-gray-900 dark:text-gray-500 flex justify-center items-center w-screen h-screen bg-black transition-all transform ${
-        visible
-          ? 'scale-100 bg-opacity-30 dark:bg-opacity-60'
-          : 'scale-0 bg-opacity-0 dark:bg-opacity-0'
-      }`}
+    <Model
+      visible={visible}
+      setVisible={setVisible}
+      config={{ title: t('settings') }}
     >
-      <div
-        className={`container p-5 shadow-lg rounded-3xl bg-bg dark:bg-bg-dark w-max max-w-full
-        `}
-      >
-        <div className="head relative h-5">
-          <div className="title font-bold text-xl absolute left-0">
-            {t('settings')}
-          </div>
-          <button
-            type="button"
-            className="close absolute right-0"
-            onClick={() => {
-              setVisible(false)
-            }}
+      {settingConfig.map(({ title, name, handleChange, value, options }) => {
+        return (
+          <label
+            key={value}
+            className="w-full h-full flex justify-start items-center pb-2"
           >
-            X
-          </button>
-        </div>
-        <div className="body mt-10 mb-10">
-          {settingConfig.map(
-            ({ title, name, handleChange, value, options }) => {
-              return (
-                <label
-                  key={value}
-                  className="w-full h-full flex justify-start items-center pb-2"
-                >
-                  <div className="title mr-3 font-medium w-24 text-right">
-                    {title}
-                  </div>
-                  <div className="form-control w-40 text-left">
-                    <select
-                      className="form-control"
-                      name={name}
-                      onChange={handleChange}
-                      value={value}
-                    >
-                      {options.map(({ value: optionValue, content }) => (
-                        <option key={optionValue} value={optionValue}>
-                          {content}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </label>
-              )
-            }
-          )}
-        </div>
-        <div className="foot relative h-5">
-          <button
-            type="button"
-            className="close font-semibold absolute right-0"
-            onClick={() => setVisible(false)}
-          >
-            {t('close')}
-          </button>
-        </div>
-      </div>
-    </div>
+            <div className="title mr-3 font-medium w-24 text-right">
+              {title}
+            </div>
+            <div className="form-control w-40 text-left">
+              <select
+                className="form-control"
+                name={name}
+                onChange={handleChange}
+                value={value}
+              >
+                {options.map(({ value: optionValue, content }) => (
+                  <option key={optionValue} value={optionValue}>
+                    {content}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </label>
+        )
+      })}
+    </Model>
   )
 }

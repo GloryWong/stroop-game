@@ -1,6 +1,6 @@
 {
   "name": "stroop-game",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "stroop-game",
   "author": "Glory Wong Zhaohui <glorywong1001@gmail.com>",
   "main": "index.js",
